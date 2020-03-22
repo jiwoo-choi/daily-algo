@@ -41,16 +41,6 @@ export interface QuestionListPayload {
         is_favor: boolean,
 }
 
-/*
-[] wrapping할려니까 기존 API못씀 
-API수정하려고하는데, dynmaic하게 못부름.
-payload를 바꾸려니까 그냥 기존 구조를 깨트리는것같아서 싫음.
-그러자니 PAYLOAD를 바꾸려니까 굉장히 애매해짐.
-
-payload를 나누는게 좋을듯.
-
-*/
-//question content에 관련된것.
 export interface QuestionPayload  {
     question:{
         questionId: string
@@ -71,13 +61,6 @@ export interface QuestionPayload  {
     //update contents [... abc] 
 }
 
-// export function write(question: Question){
-
-// }
-
-// export function readList(){
-//     //
-// }
 
     
     
