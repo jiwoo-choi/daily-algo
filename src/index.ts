@@ -9,9 +9,9 @@ async function main(){
     //https://leetcode.com/api/problems/favorite_lists/top-interview-questions/ <- top questions.
     //"https://leetcode.com/api/problems/algorithms/" <- just all algorithms.
 
-    const type : boolean = (new Date().getDay() % 2 == 0)
-    const url : string = (!type) ? "https://leetcode.com/api/problems/algorithms/" : "https://leetcode.com/api/problems/favorite_lists/top-interview-questions/"
-    const filter : Filter | undefined = (!type) ? { difficulty : { level : Difficulty.Easy} , paid_only : false} : undefined;
+    const type : boolean = !(new Date().getDay() % 2 == 0)
+    const url : string = (type) ? "https://leetcode.com/api/problems/algorithms/" : "https://leetcode.com/api/problems/favorite_lists/top-interview-questions/"
+    const filter : Filter | undefined = (type) ? { difficulty : { level : Difficulty.Easy} , paid_only : false} : undefined;
     const questions = await fetchAllQuestionWith(url, filter)
     const question : QuestionListPayload = pickRandomElementFrom(questions)
     const query = new graphQLQuery({
@@ -23,13 +23,15 @@ async function main(){
     const questionData = await fetchQuestion(query);
 
     const title = `## ${questionData.title}`
-    const tag : string = (type) ? `General Algo Questions` : `Top 100 Interview Questions`
+    const tag : string = (type) ? `General Easy Level Algo Questions` : `Top Interview Questions`
     const contents = `${questionData.content}`
     const link = `[see full..](https://leetcode.com/problems/${questionData.titleSlug})`
     const body =
     [
         title,
-        `### ` + tag,
+        `| type | difficulty |`,
+        `| - | - |`,
+        `| ${tag} | ${questionData.difficulty}`,
         contents,
         `| total accepted | total submission | accepted rate |`,
         `| - | - | - |`,
