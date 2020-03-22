@@ -36,7 +36,6 @@ async function main(){
         `| total accepted | total submission | accepted rate |`,
         `| - | - | - |`,
         `| ${questionData.stats.totalAccepted} | ${questionData.stats.totalSubmission} | ${questionData.stats.acRate} |`,
-        " ",
         link
     ].join('\n');
     
