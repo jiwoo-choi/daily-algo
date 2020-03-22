@@ -5,11 +5,9 @@ name: fetching algo problems
 # events but only for the master branch
 
 on:
-  push:
-    branches: [ master ]
   schedule:
     # 오전 11시 (GitHub Action은 UTC 타임존)
-    - cron: "43 8 * * *"
+    - cron: "59 8 * * *"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   fetch:
