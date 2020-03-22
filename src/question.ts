@@ -49,11 +49,7 @@ export interface QuestionPayload  {
         questionFrontendId:number
         content:string
         difficulty:string
-        stats: {
-            totalAccepted : string
-            totalSubmission : string
-            acRate : string
-        }
+        stats: string
     }
     //question: {
     //}
@@ -74,9 +70,9 @@ export class Question {
     content:string
     difficulty:string
     stats: {
-        totalAccepted : string
-        totalSubmission : string
-        acRate : string
+        totalAccepted:string,
+        totalSubmission:string,
+        acRate:string
     }
 
     constructor(payload : QuestionPayload) {
@@ -86,7 +82,7 @@ export class Question {
         this.titleSlug = question.titleSlug
         this.questionFrontendId = question.questionFrontendId
         this.content = question.content
-        this.stats = question.stats
+        this.stats = JSON.parse(question.stats)
         this.difficulty = question.difficulty
     }
 
