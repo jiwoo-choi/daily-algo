@@ -9,9 +9,9 @@ async function main(){
     //https://leetcode.com/api/problems/favorite_lists/top-interview-questions/ <- top questions.
     //"https://leetcode.com/api/problems/algorithms/" <- just all algorithms.
 
-    const type : boolean = !(new Date().getDay() % 2 == 0)
+    const type : boolean = (new Date().getDay() % 2 == 0)
     const url : string = (type) ? "https://leetcode.com/api/problems/algorithms/" : "https://leetcode.com/api/problems/favorite_lists/top-interview-questions/"
-    const filter : Filter | undefined = (type) ? { difficulty : { level : Difficulty.Easy} , paid_only : false} : undefined;
+    const filter : Filter = (type) ? { difficulty : { level : [Difficulty.Easy]} , paid_only : false} : { difficulty : { level : [Difficulty.Easy,Difficulty.Medium,Difficulty.Hard]} , paid_only : false} ;
     const questions = await fetchAllQuestionWith(url, filter)
     const question : QuestionListPayload = pickRandomElementFrom(questions)
     const query = new graphQLQuery({

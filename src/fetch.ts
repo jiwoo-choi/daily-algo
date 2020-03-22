@@ -14,7 +14,7 @@ export async function fetchAllQuestionWith(url:string, filter? : Filter) : Promi
 
     if (filter) {
         return stat_status_pairs.filter( element => {
-            return (filter.difficulty.level == element.difficulty.level && element.paid_only === filter.paid_only)
+            return (filter.difficulty.level.includes(element.difficulty.level) && element.paid_only === filter.paid_only)
         })    
     } else {
         return stat_status_pairs

@@ -12,7 +12,7 @@ export enum Difficulty {
 }
 export interface Filter {
     difficulty: {
-        level: Difficulty
+        level: Difficulty[]
     },
     paid_only:boolean
     //solution availbility
