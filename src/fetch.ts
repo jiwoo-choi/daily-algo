@@ -3,20 +3,25 @@ import { graphQLQueryConstructable} from './graphQL'
 import { Question, QuestionListPayload , QuestionPayload, Filter, QuestionHighListPayLoad} from './question'
 import { API } from './utils'
 
-async function fetchAllQuestions() : Promise<QuestionListPayload[]> {
-    //filter modulation?
-    //show all availabile filters and pick them?
-    const { stat_status_pairs } = await API<QuestionHighListPayLoad>("https://leetcode.com/api/problems/algorithms/")
-    return stat_status_pairs;
+
+
+export async function fetchAllQuestionWith(url:string, filter? : Filter) : Promise<QuestionListPayload[]> {
+    
+    //https://leetcode.com/api/problems/favorite_lists/top-interview-questions/ <- top questions.
+    //"https://leetcode.com/api/problems/algorithms/" <- just all algorithms.
+
+    const { stat_status_pairs } = await API<QuestionHighListPayLoad>(url)
+
+    if (filter) {
+        return stat_status_pairs.filter( element => {
+            return (filter.difficulty.level == element.difficulty.level && element.paid_only === filter.paid_only)
+        })    
+    } else {
+        return stat_status_pairs
+    }
 }
 
 
-export async function fetchAllQuestionWith(filter : Filter) : Promise<QuestionListPayload[]> {
-    const result = await fetchAllQuestions();    
-    return result.filter( element => {
-        return (filter.difficulty.level == element.difficulty.level && element.paid_only === filter.paid_only)
-    })
-}
 
 
 export async function fetchQuestion(graphQuery : graphQLQueryConstructable): Promise<Question> {

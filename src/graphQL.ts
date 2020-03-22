@@ -19,12 +19,6 @@ interface fieldDictionary {
 } 
 
 
-//쿼리를 했을때의 타입입니다. 이런식으로 값이 전달됩니다.
-//type convertedType = {operation: string, variables : Object , query:string}
-//string optional? 
-//no compliling supported.
-//enum, type
-
 //https://www.typescriptlang.org/docs/handbook/basic-types.html#object
 // 이 명세를 받는 어떤 클래스라도 반드시 graphQL query의 속성을 받습니다. 
 // 이 명세를 받는 클래스는 역시 web URL Request를 위한 쿼리를 만드는 역할을 해줘야합니다.
