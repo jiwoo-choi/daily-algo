@@ -7,9 +7,9 @@ name: fetching algo problems
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+  schedule:
+    # 오전 11시 (GitHub Action은 UTC 타임존)
+    - cron: "43 8 * * *"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   fetch:
