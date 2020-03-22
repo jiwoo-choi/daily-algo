@@ -21,8 +21,6 @@ async function main(){
     })
 
     const questionData = await fetchQuestion(query);
-    console.log(questionData.stats.totalAccepted)
-
 
     const title = `## ${questionData.title}`
     const tag : string = (type) ? `General Algo Questions` : `Top 100 Interview Questions`
@@ -42,7 +40,7 @@ async function main(){
     
     let current_datetime : Date = new Date();
     let formatted_date = (current_datetime.getMonth() + 1) + '/' + current_datetime.getDate() + "/" + current_datetime.getFullYear()
-    //createIssue(`[${formatted_date}] ${questionData.title}`, body);
+    createIssue(`[${formatted_date}] ${questionData.title}`, body);
 }
 
 main();
