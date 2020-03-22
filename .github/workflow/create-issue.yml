@@ -1,0 +1,21 @@
+name: fetch new 
+on:
+  push:
+    branches:
+      - master
+jobs:
+  fetch:
+    name: Fetch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: createIssue
+        run: |
+          npm ci
+          npm run fetch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
