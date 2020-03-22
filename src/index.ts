@@ -25,19 +25,17 @@ async function main(){
     const title = `## ${questionData.title}`
     const tag : string = (type) ? `General Easy Level Algo Questions` : `Top Interview Questions`
     const contents = `${questionData.content}`
-    const link = `[see full..](https://leetcode.com/problems/${questionData.titleSlug})`
+    const link = `\n [see full..](https://leetcode.com/problems/${questionData.titleSlug})`
     const body =
     [
         title,
         `| type | difficulty |`,
-        `| - | - |`,
+        `| :---: | :---: |`,
         `| ${tag} | ${questionData.difficulty}`,
         contents,
         `| total accepted | total submission | accepted rate |`,
-        `| - | - | - |`,
+        `| :---: | :---: | :---: |`,
         `| ${questionData.stats.totalAccepted} | ${questionData.stats.totalSubmission} | ${questionData.stats.acRate} |`,
-        "",
-        "",
         link
     ].join('\n');
     
