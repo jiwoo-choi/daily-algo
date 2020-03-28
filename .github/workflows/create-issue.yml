@@ -5,9 +5,6 @@ name: fetching algo problems
 # events but only for the master branch
 
 on:
-  push:
-    branches:
-      - master
   schedule:
     # 오전 7시
     - cron: "0 12 * * *"
