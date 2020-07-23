@@ -1,5 +1,7 @@
 # Daily Algorithm Questions.
 
+* Scheulder를 중단하였습니다.
+
 ## 참여방식
 1. **[Issue](https://github.com/jiwoo-choi/daily-algo/issues) 에 매일 문제가 한개씩 올라옵니다. 아침 07:00 (CST)**
 
